@@ -23,7 +23,7 @@ Flask
 
 ### Clone the Repository
 
-git clone https://github.com/yourusername/tic-tac-toe.git
+git clone https://github.com/Stavros112/tic-tac-toe.git
 cd tic-tac-toe
 
 ### Install Dependencies
