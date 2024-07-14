@@ -1,5 +1,5 @@
-#Tic Tac Toe Game with AI
-##This repository contains a simple Tic Tac Toe game where a user can play against an AI. The game can be played in the terminal or via a web interface.
+# Tic Tac Toe Game with AI
+## This repository contains a simple Tic Tac Toe game where a user can play against an AI. The game can be played in the terminal or via a web interface.
 
 Table of Contents
 Introduction
