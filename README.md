@@ -31,4 +31,6 @@ cd tic-tac-toe
 
 pip install flask
 
+Run the Tic_tac_toe_code.py file for terminal version
+
 Run 'python app.py" on terminal for web version
