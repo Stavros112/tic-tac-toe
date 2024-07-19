@@ -65,22 +65,77 @@
         }
 
         function aiMakeMove() {
-            let row, col;
-            do {
-                row = Math.floor(Math.random() * 3);
-                col = Math.floor(Math.random() * 3);
-            } while (board[row][col] !== '');
+            const bestMove = getBestMove(board);
+            if (bestMove) {
+                const [row, col] = bestMove;
+                board[row][col] = currentPlayer;
+                const cell = document.getElementById(`${row}-${col}`);
+                cell.innerText = currentPlayer;
 
-            board[row][col] = currentPlayer;
-            const cell = document.getElementById(`${row}-${col}`);
-            cell.innerText = currentPlayer;
+                if (checkWin()) {
+                    alert(`Player ${currentPlayer} wins!`);
+                    return;
+                }
 
+                currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+            }
+        }
+
+        function getBestMove(board) {
+            let bestScore = -Infinity;
+            let move;
+
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < 3; j++) {
+                    if (board[i][j] === '') {
+                        board[i][j] = currentPlayer;
+                        let score = minimax(board, 0, false);
+                        board[i][j] = '';
+                        if (score > bestScore) {
+                            bestScore = score;
+                            move = [i, j];
+                        }
+                    }
+                }
+            }
+            return move;
+        }
+
+        function minimax(board, depth, isMaximizing) {
             if (checkWin()) {
-                alert(`Player ${currentPlayer} wins!`);
-                return;
+                return isMaximizing ? -1 : 1;
+            }
+            if (isDraw()) {
+                return 0;
             }
 
-            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+            if (isMaximizing) {
+                let bestScore = -Infinity;
+                for (let i = 0; i < 3; i++) {
+                    for (let j = 0; j < 3; j++) {
+                        if (board[i][j] === '') {
+                            board[i][j] = currentPlayer;
+                            let score = minimax(board, depth + 1, false);
+                            board[i][j] = '';
+                            bestScore = Math.max(score, bestScore);
+                        }
+                    }
+                }
+                return bestScore;
+            } else {
+                let bestScore = Infinity;
+                for (let i = 0; i < 3; i++) {
+                    for (let j = 0; j < 3; j++) {
+                        if (board[i][j] === '') {
+                            board[i][j] = currentPlayer === 'X' ? 'O' : 'X';
+                            let score = minimax(board, depth + 1, true);
+                            board[i][j] = '';
+                            bestScore = Math.min(score, bestScore);
+                        }
+                    }
+                }
+                return bestScore;
+            }
         }
 
         function checkWin() {
@@ -99,6 +154,17 @@
                 return true;
             }
             return false;
+        }
+
+        function isDraw() {
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < 3; j++) {
+                    if (board[i][j] === '') {
+                        return false;
+                    }
+                }
+            }
+            return true;
         }
     </script>
 </body>
