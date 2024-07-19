@@ -1,17 +1,36 @@
-# Tic Tac Toe Python Project
+# Tic Tac Toe Game with AI
+### This repository contains a simple Tic Tac Toe game where a user can play against an AI. The game can be played in the terminal or via a web interface.
 
-This is a simple implementation of the classic Tic Tac Toe game in Python. The game can be played in the terminal against an AI opponent.
+This project is a simple implementation of the Tic Tac Toe game. The game can be played in two modes:
 
-## Features
+Terminal Version: Play the game in the terminal.
 
-- Play Tic Tac Toe against an AI opponent.
-- Simple and intuitive user interface in the terminal.
-- Error handling for invalid inputs and game state.
+Web Version: Play the game in a web browser with a simple graphical interface.
 
-## Getting Started
+### Features
 
-### Prerequisites
+AI Opponent: Play against a basic AI opponent.
+Interactive UI: Clickable game board for the web version.
+Two Modes: Play in the terminal or in the web browser.
 
-- Python 3.x
+## Installation
 
+Prerequisites
 
+Python 3.x
+
+Flask
+
+### Clone the Repository
+
+git clone https://github.com/Stavros112/tic-tac-toe.git
+
+cd tic-tac-toe
+
+### Install Dependencies
+
+pip install flask
+
+Run the Tic_tac_toe_code.py file for terminal version
+
+Run 'python app.py" on terminal for web version
